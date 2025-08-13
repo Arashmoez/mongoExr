@@ -1,56 +1,4 @@
 
-process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
-import fs from 'fs'
-import { MongoClient } from 'mongodb'
-import dotenv from 'dotenv'
-import path from 'path'
-
-const envPath = path.resolve(__dirname, '.env.local');
-if (fs.existsSync(envPath)) {
-    dotenv.config({ path: envPath });
-};
-
-(async () => {
-
-    const client = new MongoClient("mongodb://practicedb10:vQ2jo7n4cQireAHeGF254PQyf@udb.qepal.com:8302/?authSource=admin");
-
-    try {
-        await client.connect();
-        console.log('Connected to the MongoDB server');
-        const db = client.db('practicedb10');
-
-        let s = await db.collection("students")
-        // let r = await s.find({transport:new RegExp("bus","i")}).toArray()
-        // let r = await s.findOne({name:new RegExp("Mary")})
-        // let r = await s.find({name:new RegExp("mary")}).toArray()
-        // let r = await s.find({name:new RegExp("mary","i")}).toArray()
-        // let r = await s.find({name:/mary/i}).toArray()
-
-        // let queryQuiz = await s.find({
-        //     $or: [
-        //         { exam: { $elemMatch: { name: 'math', score: { $gt: 90 } } } },
-        //         { exam: { $elemMatch: { name: 'math', score: { $gt: 90 } } } },
-        //     ]
-        // }).sort({_id:1}).limit(3).project({name:1}).toArray()
-
-
-
-        // let queryQuiz2 = await s.find({
-        //     violations: {$size:0}
-        // }).sort({height:-1}).project({name:1, height:1, _id:0}).toArray()
-
-
-        // let test = await s.updateOne({name:"Velasquez Bernard", status:"deactive"},{
-        //     $unset:{
-        //         "contact.gmail":true
-        //     },
-        //     $set:{
-        //         email:"velber@gmail.com"
-        //     }        
-        // })
-        
-        // console.log(test)
-
                 // homework
 
         let hw1 = await s.find({$and:[
@@ -88,10 +36,6 @@ if (fs.existsSync(envPath)) {
             ]
         }).sort({name:1}).limit(3).toArray()
 
-<<<<<<< HEAD
-=======
-        console.log(hw5)
->>>>>>> 2c04fb4b33996555c08d774b1754db3d82d2df4d
 
         let hw6 = await s.find({
             sport:{$ne:"never"},
