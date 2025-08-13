@@ -77,10 +77,4 @@
 
         process.exit()
 
-    } catch {
-        console.log("Failed to connect to Mongo Server.")
-    }
-})()
-
-
 
